@@ -77,3 +77,15 @@ source $ZSH/oh-my-zsh.sh
 alias ls=exa
 alias tree='exa -T'
 alias cat=bat
+
+# Suffix Aliases
+alias -s txt=code
+alias -s json=code
+alias -s rc=code
+alias -s java=code
+alias -s html=code
+alias -s go=code
+alias -s md=code
+alias -s css=code
+alias -s csv=code
+alias -s py=code
