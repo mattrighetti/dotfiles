@@ -60,9 +60,43 @@ export PATH=/usr/local/opt/flex/bin:$PATH
 export PATH=/usr/local/opt/bison/bin:$PATH
 
 ######################
+#       LaTex        #
+######################
+export PATH=$PATH:/Library/TeX/texbin
+
+######################
 #[Plugins and source]#
 ######################
 ZSH_DISABLE_COMPFIX=true
 DISABLE_UPDATE_PROMPT=true
 ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 source $ZSH/oh-my-zsh.sh
+
+alias ls=exa
+alias tree='exa -T'
+alias cat=bat
+
+alias -s go=code
+alias -s rs=code
+alias -s json=code
+alias -s txt=code
+alias -s py=code
+alias -s html=code
+alias -s css=code
+alias -s js=code
+alias -s sh=code
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/matt/Developer/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/matt/Developer/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/matt/Developer/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/matt/Developer/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

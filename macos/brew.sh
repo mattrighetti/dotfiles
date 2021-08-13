@@ -29,6 +29,7 @@ tools=(
 
 rust_bins=(
     bat
+    exa
     fd
     procs
     tokei
