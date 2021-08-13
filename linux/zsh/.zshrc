@@ -5,6 +5,7 @@ ZSH_THEME="robbyrussell"
 
 plugins=(
     golang
+    gh
     fzf
     docker
     genpass
@@ -29,7 +30,7 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 # Default JDK version
 # to see all the available versions type `/usr/libexec/java_home -V`
 # to change java version just copy code below and change che version after -v
-# export JAVA_HOME=$(/usr/libexec/java_home -v11.0.8)
+export JAVA_HOME=/home/linuxbrew/.linuxbrew/opt/openjdk/bin
 
 # NPM Global variable
 export PATH="$HOME/.npm-global/bin:$PATH"
@@ -60,6 +61,11 @@ export PATH=/home/linuxbrew/.linuxbrew/opt/grep/libexec/gnubin:$PATH
 ######################
 source .config/conda/config
 
+################
+# IntelliJIdea #
+################
+PATH=$PATH:$HOME/Applications/idea/bin
+
 ######################
 #[Plugins and source]#
 ######################
@@ -67,3 +73,7 @@ ZSH_DISABLE_COMPFIX=true
 DISABLE_UPDATE_PROMPT=true
 ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 source $ZSH/oh-my-zsh.sh
+
+alias ls=exa
+alias tree='exa -T'
+alias cat=bat
