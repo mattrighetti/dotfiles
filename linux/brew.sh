@@ -1,10 +1,13 @@
-#!/usr/bin/env bash
-
 # Check for Homebrew
 # Install if not present
 if test ! $(which brew); then
     infoln "Installing Homebrew 🍺..."
     echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if test ! $(which brew); then
+    errorln "cannot set brew in $PATH"
 fi
 
 infoln "Updating brew..."

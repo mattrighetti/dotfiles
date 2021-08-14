@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 C_RESET='\033[0m'
 C_RED='\033[0;31m'
 C_GREEN='\033[0;32m'
@@ -49,3 +47,10 @@ function plistbuddy() {
         /usr/libexec/PlistBuddy -c "Set ${KEY} ${VAL}" ${FILE}
     fi
 }
+
+export -s println
+export -s infoln
+export -s errorln
+export -s successln
+export -s plistbuddy
+export -s warnln

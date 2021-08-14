@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # Parse Utils functions
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/scriptUtils.sh)"
+source "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/scriptUtils.sh)"
 
 # Install Xcode tools
 infoln "Installing Xcode codechain..."
 xcode-select --install
 
 # Install all commands, apps, tools, fonts with Homebrew
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/macos/brew.sh)"
+source "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/macos/brew.sh)"
 
 infoln "Creating npm global directory"
 mkdir -p $HOME/.npm-global/lib
@@ -26,7 +26,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git      $ZSH_CUSTOM/
 git clone https://github.com/zsh-users/zsh-completions.git          $ZSH_CUSTOM/plugins/zsh-completions
 
 infoln "Setting macOS defaults..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/macos/.macos)"
+source "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/macos/.macos)"
 
 infoln "Creating Developer folder..."
 mkdir $HOME/Developer
