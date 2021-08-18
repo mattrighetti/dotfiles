@@ -1,6 +1,11 @@
-## macOS dotfiles
+## dotfiles
 
-Setup script
+### macOS
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/MattRighetti/dotfiles/master/setup.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/macos/setup.sh)"
+```
+
+### linux
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/linux/setup.sh)"
 ```

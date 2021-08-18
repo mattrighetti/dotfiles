@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
 
+sudo apt update
+sudo apt upgrade -y
+sudo apt install vim fonts-firacode
+
+if test ! $(which zsh); then
+    sudo apt install zsh -y
+    chsh -s /bin/zsh
+fi
+
 # Parse Utils functions
-source "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/scriptUtils.sh)"
+curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/scriptUtils.sh -o scriptUtils.sh
+source scriptUtils.sh
 
 # Install all commands, apps, tools, fonts with Homebrew
-source "$(curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/linux/brew.sh)"
+curl -fsSL https://raw.githubusercontent.com/mattrighetti/dotfiles/master/linux/brew.sh -o brew.sh
+source brew.sh
 
 infoln "Creating npm global directory"
 mkdir -p $HOME/.npm-global/lib
@@ -37,7 +48,17 @@ packages=(
 git clone https://github.com/mattrighetti/dotfiles.git $HOME/Developer/dotfiles
 stow --dir=$HOME/Developer/dotfiles/linux --target=$HOME ${packages[@]}
 
+infoln "Installing docker..."
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+sudo usermod -aG docker $USER
+
 successln "Done!"
+
+infoln "Removing downloaded scripts"
+rm scriptUtils.sh
+rm brew.sh
+rm get-docker.sh
 
 read -p "Press [Enter] and enter password to reboot"
 sudo reboot

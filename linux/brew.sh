@@ -27,6 +27,7 @@ tools=(
     openjdk
     mongodb-database-tools
     mongodb/brew/mongodb-community-shell
+    fzf
 )
 
 rust_bins=(
@@ -88,12 +89,6 @@ ctf_tools=(
     nmap
 )
 
-fonts=(
-    font-jetbrains-mono
-    font-fira-mono
-    font-fira-code
-)
-
 infoln "Installing tools..."
 brew install ${tools[@]}
 
@@ -108,9 +103,5 @@ brew install ${ctf_tools[@]}
 
 infoln "Installing other tools..."
 brew install ${other_bin[@]}
-
-infoln "Installing fonts..."
-brew tap homebrew/cask-fonts
-brew install --cask ${fonts[@]}
 
 brew cleanup
