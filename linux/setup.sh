@@ -2,7 +2,7 @@
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install vim fonts-firacode
+sudo apt install vim fonts-firacode git -y
 
 if test ! $(which zsh); then
     sudo apt install zsh -y
@@ -45,10 +45,13 @@ packages=(
     omz
 )
 
+infoln "Stowing dotfiles"
 git clone https://github.com/mattrighetti/dotfiles.git $HOME/Developer/dotfiles
+# This is to remove conflicts with stow and the pre-existing .zshrc file
+rm $HOME/.zshrc
 stow --dir=$HOME/Developer/dotfiles/linux --target=$HOME ${packages[@]}
 
-infoln "Installing docker..."
+infoln "Installing docker"
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 sudo usermod -aG docker $USER
