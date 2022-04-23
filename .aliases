@@ -1,1 +1,13 @@
-Developer/dotfiles/macos/zsh/.aliases
+alias nv=nvim
+alias ls=exa
+alias tree='exa -T'
+alias -s go=code
+alias -s rs=code
+alias -s json=code
+alias -s txt=code
+alias -s py=code
+alias -s html=code
+alias -s css=code
+alias -s js=code
+alias -s sh=code
+
