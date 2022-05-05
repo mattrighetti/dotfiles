@@ -1,4 +1,4 @@
-local nvim_lsp = require'lspconfig'
+local nvim_lsp = require('lspconfig')
 
 local opts = {
     tools = { -- rust-tools options
@@ -29,5 +29,9 @@ local opts = {
         }
     },
 }
+
+nvim_lsp.gopls.setup{}
+nvim_lsp.html.setup{}
+nvim_lsp.pyright.setup{}
 
 require('rust-tools').setup(opts)
