@@ -24,6 +24,7 @@ set cmdheight=2
 set updatetime=50
 set shortmess+=c
 set nohlsearch
+set filetype
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
@@ -34,6 +35,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
 
