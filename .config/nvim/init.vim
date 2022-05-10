@@ -24,7 +24,8 @@ set cmdheight=2
 set updatetime=50
 set shortmess+=c
 set nohlsearch
-set filetype
+
+filetype plugin on
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/plenary.nvim'
