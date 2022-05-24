@@ -6,7 +6,13 @@ end
 
 telescope.setup {
     picker = {
-        hidden = false,
+        find_files = {
+			hidden = true,
+		},
+		buffers = {
+			ignore_current_buffer = true,
+			sort_lastused = true,
+		},
     },
     defaults = {
         vimgrep_arguments = {
@@ -75,4 +81,4 @@ telescope.setup {
     },
 }
 
-telescope.load_extension "fzf"
+telescope.load_extension("fzf")
