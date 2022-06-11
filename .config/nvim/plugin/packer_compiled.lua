@@ -90,7 +90,6 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-path"
   },
   gruvbox = {
-    config = { 'require("config/gruvbox")' },
     loaded = true,
     path = "/Users/matt/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
@@ -157,10 +156,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for telescope.nvim]], true)
 require("config/telescope")
 time([[Config for telescope.nvim]], false)
--- Config for: gruvbox
-time([[Config for gruvbox]], true)
-require("config/gruvbox")
-time([[Config for gruvbox]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require("config/cmp")

@@ -62,10 +62,6 @@ export PATH=/usr/local/opt/bison/bin:$PATH
 # This is needed because OpenBSD openssh that comes
 # with macOS is not happy to work with yubikeys.
 export PATH=/usr/local/opt/openssh/bin:$PATH
-######################
-#       LaTex        #
-######################
-export PATH=$PATH:/Library/TeX/texbin
 
 ######################
 #[Plugins and source]#
