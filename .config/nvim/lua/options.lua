@@ -8,6 +8,7 @@ o.relativenumber = settings.relative_number
 o.number = settings.number
 o.hidden = true
 o.tabstop = 4
+o.ttyfast = true
 o.softtabstop = 4
 o.undofile = true
 o.backup = false -- creates a backup file

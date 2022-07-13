@@ -71,10 +71,5 @@ DISABLE_UPDATE_PROMPT=true
 ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 source $ZSH/oh-my-zsh.sh
 
-#########
-#[Alias]#
-#########
-source $HOME/.aliases
-
 # Dotfiles alias configuration
 alias config='/usr/local/bin/git --git-dir=/Users/matt/.cfg/ --work-tree=/Users/matt'

@@ -1,3 +1,0 @@
-alias nv=nvim
-alias ls=exa
-alias tree='exa -T'
