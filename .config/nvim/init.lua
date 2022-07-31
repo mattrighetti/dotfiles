@@ -1,6 +1,16 @@
-require("plugins")
-require("mappings")
-require("options")
+require "mattrighetti.profile"
+require "mattrighetti.mappings"
+
+vim.g.mapleader = " "
+
+require "mattrighetti.options"
+require "mattrighetti.plugins"
+
+-- LSP
+require "mattrighetti.lsp"
+
+-- Telescopne
+require "mattrighetti.telescope"
 
 -- enable filetypee.lua
 -- This feature is currently opt-in

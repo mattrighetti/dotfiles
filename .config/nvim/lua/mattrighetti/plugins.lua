@@ -3,12 +3,6 @@ local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
--- returns the require for use in `config` parameter of packer's use
--- expects the name of the config file
-function get_config(name)
-	return string.format('require("config/%s")', name)
-end
-
 -- bootstrap packer if not installed
 if fn.empty(fn.glob(install_path)) > 0 then
 	fn.system({
@@ -32,6 +26,17 @@ packer.startup(function(use)
     -- actual plugins list
 	use("wbthomason/packer.nvim")
 
+
+    -- LSP
+    use({
+        "neovim/nvim-lspconfig"
+    })
+
+    use({
+        "williamboman/nvim-lsp-installer"
+    })
+
+    -- TELESCOPE
     use({
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make'
@@ -42,20 +47,16 @@ packer.startup(function(use)
 		requires = {
             { "nvim-lua/popup.nvim" },
             { "nvim-lua/plenary.nvim" }
-        },
-		config = get_config("telescope"),
+        }
 	})
 
     use({
 		"nvim-lualine/lualine.nvim",
-		config = get_config("lualine"),
-		event = "VimEnter",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
     use({
 		"nvim-treesitter/nvim-treesitter",
-		-- config = get_config("treesitter"),
 		run = ":TSUpdate",
 	})
 
@@ -65,11 +66,21 @@ packer.startup(function(use)
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-path" },
-			{ "hrsh7th/cmp-cmdline" }, 
+            { "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-cmdline" },
             { "onsails/lspkind.nvim" },
 		},
-		config = get_config("cmp"),
 	})
+
+    use("ryanoasis/vim-devicons")
+
+    -- THEMES
+    use({
+        "tjdevries/gruvbuddy.nvim",
+        requires = {
+            { "tjdevries/colorbuddy.vim" },
+        },
+    })
 
     use("morhetz/gruvbox")
 end)

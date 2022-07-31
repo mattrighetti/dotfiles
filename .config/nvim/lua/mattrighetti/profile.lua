@@ -1,6 +1,5 @@
 local M = {}
 
-M.theme = "gruvbox"
 M.global_statusline = true
 M.grepprg = "rg --hidden --vimgrep --smart-case --"
 M.relative_number = true

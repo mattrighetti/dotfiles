@@ -1,29 +1,14 @@
+local ok, lspkind = pcall(require, "lspkind")
+if not ok then
+  return
+end
+
+lspkind.init()
+
 -- Setup nvim-cmp.
 local cmp = require("cmp")
-local lspkind = require("lspkind")
 
-cmp.setup({
-	formatting = {
-		format = lspkind.cmp_format({
-			with_text = false,
-			maxwidth = 50,
-			mode = "symbol",
-			menu = {
-				buffer = "BUF",
-				rg = "RG",
-				nvim_lsp = "LSP",
-				path = "PATH",
-				luasnip = "SNIP",
-				calc = "CALC",
-				spell = "SPELL",
-			},
-		}),
-	},
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end,
-	},
+cmp.setup {
 	mapping = {
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-u>"] = cmp.mapping.scroll_docs(4),
@@ -47,6 +32,7 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = {
+        { name = "nvim_lua" },
 		{ name = "nvim_lsp" },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "luasnip" },
@@ -55,7 +41,25 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "rg", keyword_length = 5 },
 	},
-})
+	formatting = {
+		format = lspkind.cmp_format {
+			with_text = true,
+			menu = {
+				buffer = "[buf]",
+				nvim_lsp = "[LSP]",
+				path = "[path]",
+				rg = "[rg]",
+				luasnip = "[snip]",
+				calc = "[calc]",
+				spell = "[spell]",
+			},
+		},
+	},
+    experimental = {
+        native_menu = false,
+        ghost_text = true,
+    },
+}
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline("/", {
