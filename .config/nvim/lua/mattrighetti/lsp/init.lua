@@ -26,9 +26,7 @@ local servers = {
     sumneko_lua = true,
     jdtls = true,
 
-    rust_analyzer = {
-        cmd = { "rustup", "run", "rust-analyzer" },
-    },
+    rust_analyzer = true,
 
     tsserver = {
         cmd = { "typescript-language-server", "--stdio" },
