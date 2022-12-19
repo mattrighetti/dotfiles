@@ -15,7 +15,7 @@ plugins=(
 ######################
 
 # Fuzzy find
-export FZF_BASE=/usr/local/opt/fzf
+export FZF_BASE=/usr/local/bin/fzf
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -72,4 +72,4 @@ ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 source $ZSH/oh-my-zsh.sh
 
 # Dotfiles alias configuration
-alias config='/usr/local/bin/git --git-dir=/Users/matt/.cfg/ --work-tree=/Users/matt'
+alias config='/usr/bin/git --git-dir=/Users/mattrighetti/.cfg/ --work-tree=/Users/mattrighetti'

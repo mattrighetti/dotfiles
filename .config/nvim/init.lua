@@ -1,20 +1,29 @@
-require "mattrighetti.profile"
-require "mattrighetti.mappings"
+require('plugins')
 
 vim.g.mapleader = " "
 
-require "mattrighetti.options"
-require "mattrighetti.plugins"
+-- load legacy options
+vim.cmd([[
+	so ~/.config/nvim/legacy.vim
+]])
 
--- LSP
-require "mattrighetti.lsp"
+require('mylsp')
+require('options')
+require('nvimcmp')
 
--- Telescopne
-require "mattrighetti.telescope"
+require('lsp_signature').setup({
+    hint_prefix = "",
+    floating_windows = false
+})
 
--- enable filetypee.lua
--- This feature is currently opt-in
--- as it does not yet completely match all of the filetypes covered by filetype.vim
-vim.g.do_filetype_lua = 1
--- disable filetype.vim
-vim.g.did_load_filetypes = 0
+-- lualine
+require('lualine').setup()
+
+-- nvim-treesitter
+require('nvim-treesitter.configs').setup {
+    highlight = {
+        enable = true,
+    },
+}
+
+require('nvim-autopairs').setup {}
