@@ -59,6 +59,7 @@ export PATH=/usr/local/opt/gawk/libexec/gnubin:$PATH
 export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH
 export PATH=/usr/local/opt/flex/bin:$PATH
 export PATH=/usr/local/opt/bison/bin:$PATH
+export PATH=/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH
 # This is needed because OpenBSD openssh that comes
 # with macOS is not happy to work with yubikeys.
 export PATH=/usr/local/opt/openssh/bin:$PATH
