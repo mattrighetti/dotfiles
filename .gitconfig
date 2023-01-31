@@ -1464,11 +1464,25 @@
   ull = pull
   ush = push
 
-  [init]
+[init]
     defaultBranch = master
+
 [core]
 	autocrlf = input
 	editor = nvim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
+
+[delta]
+    line-numbers = true
+    side-by-side = true
+    navigate = true
+    light = false
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
 [interactive]
-	diffFilter = diff-so-fancy --patch
+	diffFilter = delta --color-only
