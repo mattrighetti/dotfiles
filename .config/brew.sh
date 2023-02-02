@@ -19,8 +19,6 @@ tools=(
     go
     cargo
     openjdk
-    mongodb-database-tools
-    mongodb/brew/mongodb-community-shell
 )
 
 rust_bins=(
