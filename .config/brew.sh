@@ -3,25 +3,21 @@
 # Check for Homebrew
 # Install if not present
 if test ! $(which brew); then
-    infoln "Installing Homebrew 🍺..."
+    echo "Installing Homebrew 🍺..."
     echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-infoln "Updating brew..."
+echo "Updating brew..."
 brew update
-infoln "Upgrading brew..."
+echo "Upgrading brew..."
 brew upgrade
 
 tools=(
     git
-    gh
-    mysql
-    maven
     node
     rustup
     go
     cargo
-    transmission
     openjdk
     mongodb-database-tools
     mongodb/brew/mongodb-community-shell
@@ -31,6 +27,7 @@ rust_bins=(
     bat
     exa
     fd
+    git-delta
     procs
     tokei
 )
@@ -111,35 +108,32 @@ apps=(
     appcleaner
     tor-browser
     docker
-    graphql-ide
-    eul
-    iterm2
-    mysqlworkbench
     sf-symbols
     keka
     balenaetcher
+    transmission
 )
 
-infoln "Installing tools..."
+echo "Installing tools..."
 brew install ${tools[@]}
 
-infoln "Installing gnu_tools..."
+echo "Installing gnu_tools..."
 brew install ${gnu_tools[@]}
 
-infoln "Installing rust_bins..."
+echo "Installing rust_bins..."
 brew install ${rust_bins[@]}
 
-infoln "Installing ctf_tools..."
+echo "Installing ctf_tools..."
 brew install ${ctf_tools[@]}
 
-infoln "Installing other tools..."
+echo "Installing other tools..."
 brew install ${other_bin[@]}
 
-infoln "Installing fonts..."
+echo "Installing fonts..."
 brew tap homebrew/cask-fonts
 brew install --cask ${fonts[@]}
 
-infoln "Installing Applications"
+echo "Installing Applications"
 brew install --cask --appdir="/Applications" ${apps[@]}
 
 brew cleanup

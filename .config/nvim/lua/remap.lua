@@ -1,7 +1,5 @@
 -- Keymaps
-
--- Open project explorer
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- nnoremap wrapper
 local function map(mode, lhs, rhs, opts)
@@ -12,6 +10,7 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- Open project explorer
 -- Center cursor when moving up and down
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")

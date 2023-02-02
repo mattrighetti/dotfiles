@@ -1,7 +1,7 @@
+vim.g.mapleader = " "
+
 require('plugins')
 require('remap')
-
-vim.g.mapleader = " "
 
 -- load legacy options
 vim.cmd([[
