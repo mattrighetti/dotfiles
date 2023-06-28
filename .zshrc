@@ -82,4 +82,4 @@ source $ZSH/oh-my-zsh.sh
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Dotfiles alias configuration
-alias config='/usr/bin/git --git-dir=/Users/mattrighetti/.cfg/ --work-tree=/Users/mattrighetti'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

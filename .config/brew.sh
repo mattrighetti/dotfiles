@@ -15,6 +15,7 @@ brew upgrade
 tools=(
     git
     node
+    nvim
     rustup
     go
     cargo
@@ -28,6 +29,7 @@ rust_bins=(
     git-delta
     procs
     tokei
+    ripgrep
 )
 
 other_bin=(
@@ -88,7 +90,7 @@ fonts=(
     font-jetbrains-mono
     font-fira-mono
     font-fira-code
-    font-fira-mono-nerd-font
+    font-fira-code-nerd-font
 )
 
 apps=(
@@ -109,6 +111,7 @@ apps=(
     sf-symbols
     keka
     transmission
+    stats
 )
 
 echo "Installing tools..."
