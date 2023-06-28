@@ -14,8 +14,10 @@ plugins=(
 # [Additional Paths] #
 ######################
 
+export BREW_PREFIX=/opt/homebrew
+
 # Fuzzy find
-export FZF_BASE=/usr/local/bin/fzf
+export FZF_BASE=$BREW_PREFIX/opt/fzf
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -32,7 +34,7 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 #[        GO        ]#
 ######################
 export GOPATH=$HOME/Developer/go
-export GOROOT=/usr/local/opt/go/libexec
+export GOROOT=$BREW_PREFIX/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export GOPRIVATE=github.com/crowdbrain
@@ -42,27 +44,32 @@ export GOPRIVATE=github.com/crowdbrain
 ######################
 export PATH=$HOME/.cargo/bin:$PATH
 
-export PATH=$PATH:/usr/local/opt/postgresql/bin
+export PATH=$PATH:$BREW_PREFIX/opt/postgresql/bin
 
 ######################
 #[        GNU       ]#
 ######################
 # These have to be put before standard /usr/bin to override them
-export PATH=/usr/local/opt/git/libexec/git-core/git:$PATH
-export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-export PATH=/usr/local/opt/gnu-indent/libexec/gnubin:$PATH
-export PATH=/usr/local/opt/gnu-getopt/libexec/gnubin:$PATH
-export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH
-export PATH=/usr/local/opt/gnu-tar/libexec/gnubin:$PATH
-export PATH=/usr/local/opt/gnutls/libexec/gnubin:$PATH
-export PATH=/usr/local/opt/gawk/libexec/gnubin:$PATH
-export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH
-export PATH=/usr/local/opt/flex/bin:$PATH
-export PATH=/usr/local/opt/bison/bin:$PATH
-export PATH=/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH
+export PATH=$BREW_PREFIX/opt/git/libexec/git-core/git:$PATH
+export PATH=$BREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH
+export PATH=$BREW_PREFIX/opt/gnu-indent/libexec/gnubin:$PATH
+export PATH=$BREW_PREFIX/opt/gnu-getopt/libexec/gnubin:$PATH
+export PATH=$BREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH
+export PATH=$BREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH
+export PATH=$BREW_PREFIX/opt/gnutls/libexec/gnubin:$PATH
+export PATH=$BREW_PREFIX/opt/gawk/libexec/gnubin:$PATH
+export PATH=$BREW_PREFIX/opt/grep/libexec/gnubin:$PATH
+export PATH=$BREW_PREFIX/opt/flex/bin:$PATH
+export PATH=$BREW_PREFIX/opt/bison/bin:$PATH
+export PATH=$BREW_PREFIX/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH
 # This is needed because OpenBSD openssh that comes
 # with macOS is not happy to work with yubikeys.
-export PATH=/usr/local/opt/openssh/bin:$PATH
+export PATH=$BREW_PREFIX/opt/openssh/bin:$PATH
+
+export PATH=$BREW_PREFIX/opt/openjdk/bin:$PATH
+
+# PSQL
+export PATH="/opt/homebrew/Cellar/postgresql@15/15.3/bin:$PATH"
 
 ######################
 #[Plugins and source]#
@@ -71,6 +78,8 @@ ZSH_DISABLE_COMPFIX=true
 DISABLE_UPDATE_PROMPT=true
 ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 source $ZSH/oh-my-zsh.sh
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Dotfiles alias configuration
 alias config='/usr/bin/git --git-dir=/Users/mattrighetti/.cfg/ --work-tree=/Users/mattrighetti'

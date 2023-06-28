@@ -67,27 +67,13 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: FiraCode Nerd Font Mono 
+    family: FiraMono Nerd Font Mono
     style: Regular
-    # family: "Fira Code"
-    # family: "Source Code Pro"
-    # style: Retina
 
   # The bold font face
   bold:
-    family: FiraCode Nerd Font Mono
+    family: FiraMono Nerd Font Mono
     style: Medium
-    # family: "Fira Code"
-    # family: "Source Code Pro"
-
-  # The italic font face
-  italic:
-    family: FiraCode Nerd Font Mono
-    style: Light
-    # style: "Light Oblique"
-    # family: "Fira Code"
-    # family: "Source Code Pro"
-    # style: "Medium Italic"
 
   # Point size of the font
   size: 12.0
@@ -459,7 +445,7 @@ debug:
 
 
 shell:
-  program: /usr/local/bin/tmux
+  program: /opt/homebrew/bin/tmux
   args:
     - new-session
     - -A

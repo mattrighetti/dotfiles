@@ -1467,6 +1467,9 @@
 [init]
     defaultBranch = master
 
+[include]
+    path = /Users/mattrighetti/.config/git-delta-themes/theme.gitconfig
+
 [core]
 	autocrlf = input
 	editor = nvim
@@ -1475,8 +1478,7 @@
 [delta]
     line-numbers = true
     side-by-side = true
-    navigate = true
-    light = false
+    features = collared-trogon
 
 [merge]
     conflictstyle = diff3
@@ -1486,3 +1488,8 @@
 
 [interactive]
 	diffFilter = delta --color-only
+
+[safe]
+    directory = /Users/mattrighetti/Developer/firecracker
+[url "git@github.com:"]
+	insteadOf = https://github.com/

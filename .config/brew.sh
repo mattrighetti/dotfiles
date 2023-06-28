@@ -88,6 +88,7 @@ fonts=(
     font-jetbrains-mono
     font-fira-mono
     font-fira-code
+    font-fira-mono-nerd-font
 )
 
 apps=(
@@ -95,7 +96,6 @@ apps=(
     discord
     jetbrains-toolbox
     spotify
-    postman
     telegram
     firefox
     visual-studio-code
@@ -108,7 +108,6 @@ apps=(
     docker
     sf-symbols
     keka
-    balenaetcher
     transmission
 )
 
