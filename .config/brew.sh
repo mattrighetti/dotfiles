@@ -94,6 +94,7 @@ fonts=(
 )
 
 apps=(
+    rectangle
     alacritty
     discord
     jetbrains-toolbox
