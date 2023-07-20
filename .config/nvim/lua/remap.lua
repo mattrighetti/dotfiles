@@ -1,20 +1,26 @@
-local builtin = require("telescope.builtin")
+local nmap = function(keys, func, desc)
+    if desc then
+        desc = 'LSP: ' .. desc
+    end
+
+    vim.keymap.set('n', keys, func, { desc = desc })
+end
 
 -- Keymaps
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep,  {})
+nmap('<leader>pv', vim.cmd.Ex)
+nmap('<leader>ff', require('telescope.builtin').find_files, '[F]ind [F]iles')
+nmap('<leader>fg', require('telescope.builtin').live_grep,  '[F]ile [G]rep')
 
 -- nnoremap wrapper
 local function map(mode, lhs, rhs, opts)
     local options = { noremap = true }
     if opts then
-        options = vim.tlb_extend("force", options, opts)
+        options = vim.tlb_extend('force', options, opts)
     end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 -- Open project explorer
 -- Center cursor when moving up and down
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
+map('n', '<C-d>', '<C-d>zz')
+map('n', '<C-u>', '<C-u>zz')

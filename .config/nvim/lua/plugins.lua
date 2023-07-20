@@ -31,13 +31,9 @@ return require('packer').startup(function()
       requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    })
+    -- themes
+    use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use { 'ellisonleao/gruvbox.nvim' }
 
     use {
         'VonHeikemen/lsp-zero.nvim',

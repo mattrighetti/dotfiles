@@ -4,12 +4,15 @@ local fn = vim.fn
 
 -- Fixed column for diagnostics to appear
 -- Show autodiagnostic popup on cursor hover_range
--- Goto previous / next diagnostic warning / error 
--- Show inlay_hints more frequently 
-vim.cmd([[
-set signcolumn=yes
-autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-]])
+-- Goto previous / next diagnostic warning / error
+-- Show inlay_hints more frequently
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
 
 o.exrc = true
 o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50" -- block in normal and beam cursor in insert mode
@@ -58,5 +61,3 @@ o.wildignore = [[
 
 g.netrw_banner = false
 g.netrw_liststyle = 3
-
-o.background = "dark" -- or "light" for light mode
