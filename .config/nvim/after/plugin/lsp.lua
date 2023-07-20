@@ -24,7 +24,7 @@ end
 
 lsp.preset("recommended")
 
-local servers = { 'eslint', 'pyright', 'gopls', 'rust_analyzer', 'lua_ls' }
+local servers = { 'pyright', 'gopls', 'rust_analyzer', 'lua_ls', 'denols' }
 lsp.ensure_installed(servers)
 
 local cmp = require('cmp')
