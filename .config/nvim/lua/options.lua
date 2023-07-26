@@ -42,6 +42,7 @@ o.shortmess = o.shortmess + "c" -- prevent "pattern not found" messages
 o.signcolumn = "yes"
 o.cmdheight = 2
 o.updatetime = 50
+o.cursorline = true
 o.hlsearch = false
 o.wildmode = "full"
 o.wildignorecase = true -- When set case is ignored when completing file names and directories
