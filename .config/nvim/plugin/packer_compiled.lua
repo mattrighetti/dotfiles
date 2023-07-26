@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/Users/matt/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["colorbuddy.vim"] = {
+    loaded = true,
+    path = "/Users/matt/.local/share/nvim/site/pack/packer/start/colorbuddy.vim",
+    url = "https://github.com/tjdevries/colorbuddy.vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/matt/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -113,6 +118,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/matt/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
+  ["gruvbuddy.nvim"] = {
+    loaded = true,
+    path = "/Users/matt/.local/share/nvim/site/pack/packer/start/gruvbuddy.nvim",
+    url = "https://github.com/tjdevries/gruvbuddy.nvim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,

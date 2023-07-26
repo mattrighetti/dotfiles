@@ -43,10 +43,25 @@ lsp.setup_nvim_cmp({
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+local servers_setup = {
+    pyright = {},
+    gopls = {},
+    tsserver = {},
+    rust_analyzer = {
+        cmd = { 'rustup', 'run', 'rust_analyzer' },
+    },
+    lua_ls = {
+        settings = {
+            globals = 'vim',
+        }
+    }
+}
+
 for _, s in ipairs(servers) do
     lspconfig[s].setup {
         on_attach = on_attach,
-        capabilities = capabilities
+        capabilities = capabilities,
+        servers_setup[s].unpack,
     }
 end
 
