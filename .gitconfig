@@ -23,6 +23,7 @@
   r = remote
   s = status
   w = whatchanged
+  x = restore
 
   ##
   # Short aliases for our frequent commands.
@@ -354,6 +355,12 @@
 
   # status with short format and showing branch and tracking info.
   ssb = status --short --branch
+
+  # status only tracked files
+  st = status -uno
+
+  ### restore ###
+  xs = restore --staged
 
   ### ALIAS MANAGEMENT ###
 

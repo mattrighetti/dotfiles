@@ -31,6 +31,9 @@ return require('packer').startup(function()
       requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    -- rust
+    use { 'simrat39/rust-tools.nvim' }
+
     -- themes
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use { 'ellisonleao/gruvbox.nvim' }
