@@ -90,22 +90,12 @@ local custom_attach = function(client, bufnr)
   buf_nnoremap { '<leader>ds', require('telescope.builtin').lsp_document_symbols }
   buf_nnoremap { '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols }
 
-  if filetype == "typescript" or filetype == "lua" then
-    client.server_capabilities.semanticTokensProvider = nil
-  end
-
   filetype_attach[filetype]()
 end
 
-local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
-updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
-updated_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
-
--- Completion configuration
-vim.tbl_deep_extend("force", updated_capabilities, require("cmp_nvim_lsp").default_capabilities())
-updated_capabilities.textDocument.completion.completionItem.insertReplaceSupport = false
-
-updated_capabilities.textDocument.codeLens = { dynamicRegistration = false }
+-- Old Capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local rust_analyzer, rust_analyzer_cmd = nil, { "rustup", "run", "nightly", "rust-analyzer" }
 local has_rt, rt = pcall(require, "rust-tools")
@@ -117,7 +107,7 @@ if has_rt then
   rt.setup {
     server = {
       cmd = rust_analyzer_cmd,
-      capabilities = updated_capabilities,
+      capabilities = capabilities,
       on_attach = custom_attach,
     },
     dap = {
@@ -164,7 +154,6 @@ local servers = {
     },
   },
 
-  eslint = true,
   html = true,
   pyright = true,
   yamlls = true,
@@ -188,6 +177,7 @@ local servers = {
   },
 
   rust_analyzer = rust_analyzer,
+  volar = true,
 
   tsserver = {
     cmd = { "typescript-language-server", "--stdio" },
@@ -226,7 +216,7 @@ local setup_server = function(server, config)
   config = vim.tbl_deep_extend("force", {
     on_init = custom_init,
     on_attach = custom_attach,
-    capabilities = updated_capabilities,
+    capabilities = capabilities,
   }, config)
 
   lspconfig[server].setup(config)
@@ -239,5 +229,5 @@ end
 return {
   on_init = custom_init,
   on_attach = custom_attach,
-  capabilities = updated_capabilities,
+  capabilities = capabilities,
 }

@@ -1,6 +1,10 @@
 vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
+local g = vim.g
+
+g.netrw_banner = false
+g.netrw_liststyle = 3
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
@@ -28,6 +32,7 @@ opt.splitbelow = true -- Prefer windows splitting to the bottom
 opt.updatetime = 1000 -- Make updates happen faster
 opt.hlsearch = false -- I wouldn't use this without my DoNoHL function
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
+opt.completeopt = { "menu", "menuone", "noselect", "noinsert" } -- A comma separated list of options for Insert mode completion
 
 -- opt.smoothscroll = true
 
