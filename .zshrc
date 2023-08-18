@@ -69,7 +69,7 @@ export PATH=$BREW_PREFIX/opt/openssh/bin:$PATH
 export PATH=$BREW_PREFIX/opt/openjdk/bin:$PATH
 
 # PSQL
-export PATH="/opt/homebrew/Cellar/postgresql@15/15.3/bin:$PATH"
+export PATH=$BREW_PREFIX/opt/postgresql@15/bin:$PATH
 
 ######################
 #[Plugins and source]#
