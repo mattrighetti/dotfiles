@@ -13,9 +13,6 @@ nmap('<leader>pv', vim.cmd.Ex)
 nmap('<leader>ff', require('telescope.builtin').find_files, '[F]ind [F]iles')
 nmap('<leader>fg', require('telescope.builtin').live_grep,  '[F]ile [G]rep')
 
-
-
-
 -- nnoremap wrapper
 local function map(mode, lhs, rhs, opts)
     local options = { noremap = true }

@@ -2,8 +2,7 @@ vim.g.mapleader = " "
 
 require('plugins')
 require('remap')
-require('matt.lsp')
-require('matt.cmp')
+require('matt')
 
 -- load legacy options
 vim.cmd([[

@@ -1,1 +1,2 @@
-require('lsp')
+require('matt.lsp')
+require('matt.cmp')
