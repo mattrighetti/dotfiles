@@ -84,16 +84,17 @@ local filetype_attach = setmetatable({
 local custom_attach = function(client, bufnr)
   local filetype = vim.api.nvim_buf_get_option(0, "filetype")
 
-  buf_inoremap { "<c-s>", vim.lsp.buf.signature_help }
+  buf_inoremap { "<c-s>",      vim.lsp.buf.signature_help }
 
   buf_nnoremap { 'K',          vim.lsp.buf.hover, { desc = "lsp:hover" } }
   buf_nnoremap { '<leader>sh', vim.lsp.buf.signature_help }
   buf_nnoremap { 'gd',         vim.lsp.buf.definition }
   buf_nnoremap { 'gI',         vim.lsp.buf.implementation }
-  buf_nnoremap { 'gr',         require('telescope.builtin').lsp_references }
   buf_nnoremap { '<leader>rn', vim.lsp.buf.rename }
   buf_nnoremap { '<leader>ca', vim.lsp.buf.code_action }
   buf_nnoremap { '<leader>D',  vim.lsp.buf.type_definition }
+
+  buf_nnoremap { 'gr',         require('telescope.builtin').lsp_references }
   buf_nnoremap { '<leader>ds', require('telescope.builtin').lsp_document_symbols }
   buf_nnoremap { '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols }
 
