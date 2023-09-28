@@ -107,33 +107,22 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local rust_analyzer, rust_analyzer_cmd = nil, { "rustup", "run", "nightly", "rust-analyzer" }
 local has_rt, rt = pcall(require, "rust-tools")
 if has_rt then
-  local extension_path = vim.fn.expand "~/.vscode/extensions/sadge-vscode/extension/"
-  local codelldb_path = extension_path .. "adapter/codelldb"
-  local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-
   rt.setup {
     server = {
       cmd = rust_analyzer_cmd,
+      settings = {
+        ["rust-analyzer"] = {
+          checkOnSave = {
+            command = "clippy",
+          },
+        },
+      },
       capabilities = capabilities,
       on_attach = custom_attach,
-    },
-    dap = {
-      adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
     },
     tools = {
       inlay_hints = {
         auto = false,
-      },
-    },
-  }
-else
-  rust_analyzer = {
-    cmd = rust_analyzer_cmd,
-    settings = {
-      ["rust-analyzer"] = {
-        checkOnSave = {
-          command = "clippy",
-        },
       },
     },
   }
@@ -199,8 +188,6 @@ local servers = {
 
     on_attach = function(client)
       custom_attach(client)
-      -- ts_util.setup { auto_inlay_hints = false }
-      -- ts_util.setup_client(client)
     end,
   },
 }
