@@ -30,6 +30,7 @@ rust_bins=(
     procs
     tokei
     ripgrep
+    rustfmt
 )
 
 other_bin=(
