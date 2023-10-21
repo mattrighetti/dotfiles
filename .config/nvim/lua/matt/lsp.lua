@@ -127,6 +127,8 @@ if has_rt then
       },
     },
   }
+
+  rust_analyzer = rt
 end
 
 local servers = {
@@ -196,7 +198,7 @@ local servers = {
 
 require("mason").setup()
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "jsonls" }
+  ensure_installed = { "lua_ls", "jsonls", "gopls" }
 }
 
 local setup_server = function(server, config)
