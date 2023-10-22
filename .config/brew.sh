@@ -131,6 +131,12 @@ brew install ${ctf_tools[@]}
 echo "Installing other tools..."
 brew install ${other_bin[@]}
 
+if [[ ! $(uname) == "Darwin" ]]; then
+    echo "Skipping casks"
+    brew cleanup
+    return 0
+fi
+
 echo "Installing fonts..."
 brew tap homebrew/cask-fonts
 brew install --cask ${fonts[@]}

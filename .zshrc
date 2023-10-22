@@ -14,7 +14,11 @@ plugins=(
 # [Additional Paths] #
 ######################
 
-export BREW_PREFIX=/opt/homebrew
+if [[ $(uname) == "Darwin" ]]; then
+    export BREW_PREFIX=/opt/homebrew
+else
+    export BREW_PREFIX=/home/linuxbrew/.linuxbrew
+fi
 
 # Fuzzy find
 export FZF_BASE=$BREW_PREFIX/opt/fzf
@@ -79,7 +83,10 @@ DISABLE_UPDATE_PROMPT=true
 ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 source $ZSH/oh-my-zsh.sh
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$($BREW_PREFIX/bin/brew shellenv)"
 
 # Dotfiles alias configuration
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+### Dev
+#export PATH=~/Downloads/nvim-macos/bin:$PATH
