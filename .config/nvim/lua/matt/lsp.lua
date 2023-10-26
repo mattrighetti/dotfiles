@@ -74,6 +74,10 @@ local filetype_attach = setmetatable({
     autocmd_format(false)
   end,
 
+  terraform = function()
+    autocmd_format(false)
+  end,
+
 }, {
   __index = function()
     return function() end
@@ -93,7 +97,15 @@ local custom_attach = function(client, bufnr)
   buf_nnoremap { '<leader>rn', vim.lsp.buf.rename }
   buf_nnoremap { '<leader>ca', vim.lsp.buf.code_action }
   buf_nnoremap { '<leader>D',  vim.lsp.buf.type_definition }
-
+  buf_nnoremap { 'H',          function ()
+    if client.server_capabilities.inlayHintProvider then
+      local ok, _ = pcall(vim.lsp.inlay_hint, bufnr, nil)
+      if not ok then
+        print("inlay hint not available")
+      end
+    end
+  end
+  }
   buf_nnoremap { 'gr',         require('telescope.builtin').lsp_references }
   buf_nnoremap { '<leader>ds', require('telescope.builtin').lsp_document_symbols }
   buf_nnoremap { '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols }
@@ -174,6 +186,9 @@ local servers = {
       },
     },
   },
+
+  tflint = true,
+  terraformls = true,
 
   rust_analyzer = rust_analyzer,
   volar = true,
