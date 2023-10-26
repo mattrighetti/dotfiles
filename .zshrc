@@ -41,7 +41,6 @@ export GOPATH=$HOME/Developer/go
 export GOROOT=$BREW_PREFIX/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-export GOPRIVATE=github.com/crowdbrain
 
 ######################
 #[       RUST       ]#
@@ -87,6 +86,3 @@ eval "$($BREW_PREFIX/bin/brew shellenv)"
 
 # Dotfiles alias configuration
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-### Dev
-#export PATH=~/Downloads/nvim-macos/bin:$PATH
