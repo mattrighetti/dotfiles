@@ -1481,6 +1481,7 @@
 	autocrlf = input
 	editor = nvim
 	pager = delta
+	excludesfile = /Users/matt/.gitignore
 
 [delta]
     line-numbers = true
