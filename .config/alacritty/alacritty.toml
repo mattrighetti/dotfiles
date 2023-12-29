@@ -1,6 +1,4 @@
-custom_cursor_colors = true
 live_config_reload = true
-"window.opacity" = 1.0
 
 [bell]
 animation = "EaseOutExpo"
@@ -46,11 +44,9 @@ unfocused_hollow = true
 log_level = "OFF"
 persistent_logging = false
 print_events = false
-ref_test = false
 render_timer = false
 
 [font]
-AppleFontSmoothing = true
 size = 12.5
 
 [font.bold]
@@ -368,12 +364,6 @@ hide_when_typing = true
 [[mouse.bindings]]
 action = "PasteSelection"
 mouse = "Middle"
-
-[mouse.double_click]
-threshold = 300
-
-[mouse.triple_click]
-threshold = 300
 
 [scrolling]
 history = 0
