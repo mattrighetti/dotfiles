@@ -1474,28 +1474,17 @@
 [init]
     defaultBranch = master
 
-[include]
-    path = /Users/mattrighetti/.config/git-delta-themes/theme.gitconfig
-
 [core]
 	autocrlf = input
 	editor = nvim
 	pager = delta
 	excludesfile = /Users/matt/.gitignore
 
-[delta]
-    line-numbers = true
-    side-by-side = true
-    features = collared-trogon
-
 [merge]
     conflictstyle = diff3
 
 [diff]
-    colorMoved = default
-
-[interactive]
-	diffFilter = delta --color-only
+    external = difft
 
 [safe]
     directory = /Users/mattrighetti/Developer/firecracker

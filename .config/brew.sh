@@ -31,6 +31,7 @@ rust_bins=(
     tokei
     ripgrep
     rustfmt
+    difftastic
 )
 
 other_bin=(
