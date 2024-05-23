@@ -8,6 +8,9 @@ end
 
 -- Keymaps
 nmap('<leader>pv', vim.cmd.Ex)
+nmap('<leader>fn', function()
+  require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }
+end, '[S]earch [N]eovim files')
 
 -- Telescope
 nmap('<leader>ff', require('telescope.builtin').find_files, '[F]ind [F]iles')

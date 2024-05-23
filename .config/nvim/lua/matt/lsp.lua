@@ -84,7 +84,6 @@ local filetype_attach = setmetatable({
   end,
 })
 
-
 local custom_attach = function(client, bufnr)
   local filetype = vim.api.nvim_buf_get_option(0, "filetype")
 
@@ -148,10 +147,14 @@ local servers = {
   lua_ls = {
     settings = {
       Lua = {
-        runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
-        completion = { keyworkSnippet = "Disable" },
+        runtime = { version = "LuaJIT" },
+        completion = { callSnippet = "Replace" },
         workspace = {
           checkThirdParty = false,
+          library = {
+            '${3rd}/luv/library',
+            unpack(vim.api.nvim_get_runtime_file('', true))
+          }
         },
         diagnostics = {
           enable = true,
@@ -166,9 +169,11 @@ local servers = {
   },
 
   html = true,
-  pyright = true,
+  pyright = false,
+  pylsp = true,
   yamlls = true,
   jsonls = true,
+  templ = true,
 
   gopls = {
     settings = {
@@ -203,6 +208,19 @@ local servers = {
       "typescriptreact",
       "typescript.tsx",
     },
+
+    --[[
+    handlers = {
+      ['textDocument/definition'] = function(err, result, method, ...)
+        if vim.tbl_islist(result) and #result > 1 then
+          local filtered_result = filter_definition(result, filterReactDTS)
+          return vim.lsp.handlers['textDocument/definition'](err, filtered_result, method, ...)
+        end
+
+        vim.lsp.handlers['textDocument/definition'](err, result, method, ...)
+      end
+    },
+    -]]
 
     on_attach = function(client)
       custom_attach(client)

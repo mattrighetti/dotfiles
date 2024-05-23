@@ -47,7 +47,7 @@ print_events = false
 render_timer = false
 
 [font]
-size = 12.5
+size = 12
 
 [font.bold]
 family = "Monaspace Neon"

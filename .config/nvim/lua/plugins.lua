@@ -1,70 +1,52 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
--- bootstrap packer if not installed
-if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({
-		"git",
-		"clone",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-	execute("packadd packer.nvim")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- initialize and configure packer
-local packer = require("packer")
+require("lazy").setup({
+  "nvim-lua/plenary.nvim",
+  "tjdevries/express_line.nvim",
+  "nvim-telescope/telescope.nvim",
 
-packer.init({
-	enable = true, -- enable profiling via :PackerCompile profile=true
-	threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+  -- rust
+  "simrat39/rust-tools.nvim",
+
+  -- themes
+  {"rose-pine/neovim", as='rose-pine'},
+  "ellisonleao/gruvbox.nvim",
+  "rebelot/kanagawa.nvim",
+  "loctvl842/monokai-pro.nvim",
+
+  -- LSP Support
+  "neovim/nvim-lspconfig",
+
+  -- Autocompletion
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-nvim-lua",
+
+  "L3MON4D3/LuaSnip",
+
+  "saadparwaiz1/cmp_luasnip",
+
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+
+  "mbbill/undotree",
+
+  "nvim-treesitter/nvim-treesitter",
+  "tpope/vim-fugitive",
+  "windwp/nvim-autopairs",
+  "ntpeters/vim-better-whitespace",
+  "easymotion/vim-easymotion"
 })
-
-return require('packer').startup(function()
-    use {'wbthomason/packer.nvim'}
-
-    use {'nvim-lua/plenary.nvim'}
-
-    use {'tjdevries/express_line.nvim'}
-
-    use {'nvim-telescope/telescope.nvim', tag = '0.1.x'}
-
-    -- rust
-    use {'simrat39/rust-tools.nvim'}
-
-    -- themes
-    use({'rose-pine/neovim', as='rose-pine'})
-    use {'ellisonleao/gruvbox.nvim'}
-
-    -- LSP Support
-    use {'neovim/nvim-lspconfig'}
-
-    -- Autocompletion
-    use {'hrsh7th/nvim-cmp'}
-    use {'hrsh7th/cmp-buffer'}
-    use {'hrsh7th/cmp-path'}
-    use {'hrsh7th/cmp-nvim-lsp'}
-    use {'hrsh7th/cmp-nvim-lua'}
-
-    use({
-      "L3MON4D3/LuaSnip",
-      -- follow latest release.
-      tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-      -- install jsregexp (optional!:).
-      run = "make install_jsregexp"
-    })
-    use {'saadparwaiz1/cmp_luasnip'}
-
-    use {'williamboman/mason.nvim'}
-    use {'williamboman/mason-lspconfig.nvim'}
-
-    use 'mbbill/undotree'
-
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use 'tpope/vim-fugitive'
-    use 'windwp/nvim-autopairs'
-    use 'ntpeters/vim-better-whitespace'
-    use 'easymotion/vim-easymotion'
-end)

@@ -5,10 +5,11 @@ local g = vim.g
 
 g.netrw_banner = false
 g.netrw_liststyle = 3
+g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
-opt.wildignore:append { "*.o", "*~", "*.pyc", "*pycache*" }
+opt.wildignore:append({ "*.o", "*~", "*.pyc", "*pycache*" })
 opt.wildignore:append { "Cargo.lock", "Cargo.Bazel.lock" }
 
 -- Cool floating window popup menu for completion on command line
