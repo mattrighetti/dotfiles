@@ -10,6 +10,6 @@ alias path='echo -e ${PATH//:/\\n}'
 alias nv=nvim
 
 # Filesystem
-alias ls=exa
-unset ls
-alias tree='exa -T'
+alias ll="eza -l -g --icons"
+alias ls="eza --icons"
+alias tree='eza -T'
