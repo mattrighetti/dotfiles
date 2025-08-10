@@ -1,52 +1,63 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  "nvim-lua/plenary.nvim",
-  "tjdevries/express_line.nvim",
-  "nvim-telescope/telescope.nvim",
+    -- Core dependencies
+    "nvim-lua/plenary.nvim",       -- Lua utilities
+    "tjdevries/express_line.nvim", -- Status line
+    "nvim-telescope/telescope.nvim", -- Fuzzy finder
 
-  -- rust
-  "simrat39/rust-tools.nvim",
+    -- Language Support
+    "simrat39/rust-tools.nvim", -- Rust support
+    "prettier/vim-prettier",  -- Code formatting
 
-  -- themes
-  {"rose-pine/neovim", as='rose-pine'},
-  "ellisonleao/gruvbox.nvim",
-  "rebelot/kanagawa.nvim",
-  "loctvl842/monokai-pro.nvim",
+    -- Theme Collection
+    { "rose-pine/neovim", as = 'rose-pine' }, -- Rose Pine theme
+    "ellisonleao/gruvbox.nvim",         -- Gruvbox theme
+    "rebelot/kanagawa.nvim",            -- Kanagawa theme
+    "loctvl842/monokai-pro.nvim",       -- Monokai Pro theme
 
-  -- LSP Support
-  "neovim/nvim-lspconfig",
+    -- LSP and Completion
+    "neovim/nvim-lspconfig",  -- LSP configuration
+    "hrsh7th/nvim-cmp",       -- Completion engine
+    "hrsh7th/cmp-buffer",     -- Buffer completion
+    "hrsh7th/cmp-path",       -- Path completion
+    "hrsh7th/cmp-nvim-lsp",   -- LSP completion
+    "hrsh7th/cmp-nvim-lua",   -- Lua completion
+    "L3MON4D3/LuaSnip",       -- Snippet engine
+    "saadparwaiz1/cmp_luasnip", -- Snippet completion
 
-  -- Autocompletion
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-nvim-lua",
+    -- LSP Tools
+    "williamboman/mason.nvim",         -- Package manager for LSP
+    "williamboman/mason-lspconfig.nvim", -- Mason integration with LSP
 
-  "L3MON4D3/LuaSnip",
+    -- Version Control and History
+    "mbbill/undotree",  -- Undo history visualization
+    "tpope/vim-fugitive", -- Git integration
 
-  "saadparwaiz1/cmp_luasnip",
+    -- Syntax and Text
+    "nvim-treesitter/nvim-treesitter", -- Syntax highlighting
+    "windwp/nvim-autopairs",         -- Auto-pair brackets
+    "ntpeters/vim-better-whitespace", -- Whitespace management
 
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
+    -- Navigation and Movement
+    "easymotion/vim-easymotion", -- Enhanced motion
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
 
-  "mbbill/undotree",
-
-  "nvim-treesitter/nvim-treesitter",
-  "tpope/vim-fugitive",
-  "windwp/nvim-autopairs",
-  "ntpeters/vim-better-whitespace",
-  "easymotion/vim-easymotion"
+    -- Git
+    "lewis6991/gitsigns.nvim"
 })

@@ -60,13 +60,13 @@ local filetype_attach = setmetatable({
 
   typescript = function()
     autocmd_format(false, function(client)
-      return client.name ~= "tsserver"
+      return client.name ~= "ts_ls"
     end)
   end,
 
   javascript = function()
     autocmd_format(false, function(client)
-      return client.name ~= "tsserver"
+      return client.name ~= "ts_ls"
     end)
   end,
 
@@ -147,13 +147,19 @@ local servers = {
   lua_ls = {
     settings = {
       Lua = {
-        runtime = { version = "LuaJIT" },
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+          version = "LuaJIT",
+          path = {
+            unpack(vim.split(package.path, ";")),
+          },
+        },
         completion = { callSnippet = "Replace" },
         workspace = {
           checkThirdParty = false,
           library = {
             '${3rd}/luv/library',
-            unpack(vim.api.nvim_get_runtime_file('', true))
+            unpack(vim.api.nvim_get_runtime_file('', true)),
           }
         },
         diagnostics = {
@@ -167,6 +173,16 @@ local servers = {
       }
     },
   },
+
+    sourcekit = {
+        capabilities = {
+            workspace = {
+                didChangeWatchedFiles = {
+                    dynamicRegistration = true,
+                },
+            },
+        },
+    },
 
   html = true,
   pyright = false,
@@ -198,7 +214,7 @@ local servers = {
   rust_analyzer = rust_analyzer,
   volar = true,
 
-  tsserver = {
+  ts_ls = {
     cmd = { "typescript-language-server", "--stdio" },
     filetypes = {
       "javascript",

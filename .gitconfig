@@ -1,6 +1,7 @@
 [user]
 	name = Mattia Righetti
 	email = matt95.righetti@gmail.com
+
 [alias]
 
   ##
@@ -1095,25 +1096,46 @@
 	editor = nvim
 	pager = delta
 	excludesfile = /Users/matt/.gitignore
+	excludefile = /Users/mattrighetti/.gitignore
 
 [merge]
     tool = meld
-    conflictstyle = zdiff3
+	conflictstyle = zdiff3
     colorMoved = default
-	ff = no
+	ff = yes
 
 [diff]
     external = difft
-    algorithm = histogram
-
-[safe]
-    directory = /Users/mattrighetti/Developer/firecracker
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+
+[url "git@github.com:"]
+	insteadOf = http://github.com/
 
 [branch]
 	sort = -committerdate
 
 [push]
 	autoSetupRemote = true
+	followTags = true
+[column]
+	ui = auto
+[tag]
+	sort = version:refname
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[commit]
+	verbose = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[pull]
+	rebase = true
