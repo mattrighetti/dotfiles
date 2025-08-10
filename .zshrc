@@ -1,13 +1,28 @@
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_COMPFIX="true"
+
+# Smarter completion initialization
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
+
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+
 ######################
 #       [Theme]      #
 ######################
 ZSH_THEME="robbyrussell"
 
 plugins=(
-    fzf
+    git
     zsh-autosuggestions
-    zsh-syntax-highlighting
     zsh-completions
+    zsh-syntax-highlighting
 )
 
 ######################
@@ -22,6 +37,13 @@ fi
 
 # Fuzzy find
 export FZF_BASE=$BREW_PREFIX/opt/fzf
+
+# lazy load fzf
+fzf() {
+  unfunction fzf
+  source ~/.fzf.zsh
+  fzf "$@"
+}
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -77,12 +99,13 @@ export PATH=$BREW_PREFIX/opt/postgresql@15/bin:$PATH
 ######################
 #[Plugins and source]#
 ######################
-ZSH_DISABLE_COMPFIX=true
-DISABLE_UPDATE_PROMPT=true
-ZSH_COMPDUMP="${HOME}/.cache/zsh/zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+
 source $ZSH/oh-my-zsh.sh
 
 eval "$($BREW_PREFIX/bin/brew shellenv)"
 
 # Dotfiles alias configuration
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/mattrighetti/.docker/completions $fpath)
